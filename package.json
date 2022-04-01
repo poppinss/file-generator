@@ -103,6 +103,10 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
   "np": {
     "contents": ".",
     "anyBranch": false

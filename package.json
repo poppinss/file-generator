@@ -18,7 +18,7 @@
     "copy:images": "copyfiles 'src/files/**/*{.png,.gif,.jpg,.pdf,.docx,.xlsx}' build",
     "compile": "npm run lint && npm run clean && tsc && npm run copy:images",
     "build": "npm run compile",
-    "prepublishOnly": "npm run build && node build/bin/test.js",
+    "prepublishOnly": "npm run build",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
     "commit": "git-cz",

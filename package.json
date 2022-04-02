@@ -115,5 +115,17 @@
   },
   "dependencies": {
     "bytes": "^3.1.2"
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poppinss/file-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/poppinss/file-generator/issues"
+  },
+  "homepage": "https://github.com/poppinss/file-generator#readme"
 }

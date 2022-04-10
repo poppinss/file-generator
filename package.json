@@ -7,8 +7,12 @@
     "build/index.d.ts",
     "build/index.js"
   ],
+  "types": "./build/index.d.ts",
   "exports": {
-    ".": "./build/index.js"
+    ".": {
+      "types": "./build/index.d.ts",
+      "require": "./build/index.js"
+    }
   },
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",

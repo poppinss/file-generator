@@ -5,9 +5,9 @@
 
 > **Note**: This package is ESM only
 
-This package allows you generate fake in-memory files for varying sizes. The generated file can be used during testing to test the file uploads functionality of your Node server.
+This package allows you generate fake in-memory files of varying sizes. The generated file can be used during testing to test the file uploads functionality of your Node server.
 
-- Support for `docx`, `xlsx`, `pdf`, `png`, `jpg`, and `gif` files.
+- Support for `docx`, `csv`, `xlsx`, `pdf`, `png`, `jpg`, and `gif` files.
 - Passes the [magic number file](https://gist.github.com/leommoore/f9e57ba2aa4bf197ebc5) validation.
 - The file contents are kept inside memory as a buffer. No files are written to the disk.
 
@@ -67,6 +67,17 @@ form.append('avatar', file.contents, {
 - Only the first few bytes of the files are valid and rest of the bytes are empty. Therefore, further processing of the files will not work. For example: If you open the PDF file to read its content on the server, then using this package is not the right choice.
 - Every file type has minimum bytes and you cannot generate files smaller than that. This is done to keep the initial bytes valid and them pass the standard validation rules.
 
+## Available methods
+Following are the available methods to generate different files.
+
+- `generateDocx` - Generate a Microsoft word doc file (passes [file-type][1] validation).
+- `generateGif` - Generate a gif file (passes [file-type][1] validation).
+- `generateJpg` - Generate a jpeg file (passes [file-type][1] validation).
+- `generatePdf` - Generate a pdf file (passes [file-type][1] validation).
+- `generatePng` - Generate a png file (passes [file-type][1] validation).
+- `generateXlsx` - Generate a Microsoft excel spreadsheet (passes [file-type][1] validation).
+- `generateCsv` - Generate a CSV file.
+
 [github-actions-image]: https://img.shields.io/github/workflow/status/poppinss/file-generator/test?style=for-the-badge
 [github-actions-url]: https://github.com/poppinss/file-generator/actions/workflows/test.yml "github-actions"
 
@@ -78,3 +89,5 @@ form.append('avatar', file.contents, {
 
 [typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
 [typescript-url]:  "typescript"
+
+[1]: https://github.com/sindresorhus/file-type

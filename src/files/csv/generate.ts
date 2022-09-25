@@ -8,7 +8,7 @@
  */
 
 import { randomUUID } from 'node:crypto'
-import bytes from 'bytes'
+import { toBuffer } from '../utilities.js'
 
 /**
  * Generates a fake csv file for the given file size.
@@ -22,9 +22,8 @@ export async function generateCsv(
 ): Promise<{ contents: Buffer; size: number; name: string; mime: string }> {
   const mime = 'text/csv'
   const name = fileName ?? `${randomUUID()}.csv`
-  const size = typeof fileSize === 'string' ? bytes(fileSize) : fileSize
-
-  const contents = Buffer.alloc(size, 'h1,h2,h3\nr1c1,r1c2,r1c3\nr2c1,r2c2,r2c3', 'binary')
+  const initialBytes = Buffer.from('h1,h2,h3\nr1c1,r1c2,r1c3\nr2c1,r2c2,r2c3')
+  const contents = toBuffer(fileSize, initialBytes)
 
   return { contents, mime, size: contents.length, name }
 }

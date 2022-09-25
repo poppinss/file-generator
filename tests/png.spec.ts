@@ -8,8 +8,8 @@
  */
 
 import { test } from '@japa/runner'
-import { generatePng } from '../src/files/png'
-import { fileTypeFromBuffer } from '../test_helpers'
+import { fileTypeFromBuffer } from 'file-type'
+import { generatePng } from '../src/files/png/generate.js'
 
 test.group('PNG', () => {
   test('generate a png file', async ({ assert }) => {

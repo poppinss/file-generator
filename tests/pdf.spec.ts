@@ -8,8 +8,8 @@
  */
 
 import { test } from '@japa/runner'
-import { generatePdf } from '../src/files/pdf'
-import { fileTypeFromBuffer } from '../test_helpers'
+import { fileTypeFromBuffer } from 'file-type'
+import { generatePdf } from '../src/files/pdf/generate.js'
 
 test.group('PDF', () => {
   test('generate a pdf file', async ({ assert }) => {

@@ -8,8 +8,8 @@
  */
 
 import { test } from '@japa/runner'
-import { generateDocx } from '../src/files/docx'
-import { fileTypeFromBuffer } from '../test_helpers'
+import { fileTypeFromBuffer } from 'file-type'
+import { generateDocx } from '../src/files/docx/generate.js'
 
 test.group('DOCX', () => {
   test('generate a docx file', async ({ assert }) => {

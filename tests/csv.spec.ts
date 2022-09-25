@@ -8,7 +8,7 @@
  */
 
 import { test } from '@japa/runner'
-import { generateCsv } from '../src/files/csv'
+import { generateCsv } from '../src/files/csv/generate.js'
 
 test.group('CSV', () => {
   test('generate a csv file', async ({ assert }) => {

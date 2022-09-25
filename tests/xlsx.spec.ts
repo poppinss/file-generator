@@ -8,8 +8,8 @@
  */
 
 import { test } from '@japa/runner'
-import { generateXlsx } from '../src/files/xlsx'
-import { fileTypeFromBuffer } from '../test_helpers'
+import { fileTypeFromBuffer } from 'file-type'
+import { generateXlsx } from '../src/files/xlsx/generate.js'
 
 test.group('XLSX', () => {
   test('generate a xlsx file', async ({ assert }) => {

@@ -8,8 +8,8 @@
  */
 
 import { test } from '@japa/runner'
-import { generateGif } from '../src/files/gif'
-import { fileTypeFromBuffer } from '../test_helpers'
+import { fileTypeFromBuffer } from 'file-type'
+import { generateGif } from '../src/files/gif/generate.js'
 
 test.group('GIF', () => {
   test('generate a gif file with custom name', async ({ assert }) => {

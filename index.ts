@@ -7,9 +7,9 @@
  * file that was distributed with this source code.
  */
 
-export { generateDocx } from './src/files/docx'
-export { generateGif } from './src/files/gif'
-export { generateJpg } from './src/files/jpg'
-export { generatePdf } from './src/files/pdf'
-export { generatePng } from './src/files/png'
-export { generateXlsx } from './src/files/xlsx'
+export { generateDocx } from './src/files/docx/generate.js'
+export { generateGif } from './src/files/gif/generate.js'
+export { generateJpg } from './src/files/jpg/generate.js'
+export { generatePdf } from './src/files/pdf/generate.js'
+export { generatePng } from './src/files/png/generate.js'
+export { generateXlsx } from './src/files/xlsx/generate.js'

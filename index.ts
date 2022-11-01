@@ -7,10 +7,20 @@
  * file that was distributed with this source code.
  */
 
-export { generateDocx } from './src/files/docx/generate.js'
-export { generateGif } from './src/files/gif/generate.js'
-export { generateJpg } from './src/files/jpg/generate.js'
-export { generatePdf } from './src/files/pdf/generate.js'
-export { generatePng } from './src/files/png/generate.js'
-export { generateXlsx } from './src/files/xlsx/generate.js'
-export { generateCsv } from './src/files/csv/generate.js'
+import { generateDocx } from './src/files/docx/generate.js'
+import { generateGif } from './src/files/gif/generate.js'
+import { generateJpg } from './src/files/jpg/generate.js'
+import { generatePdf } from './src/files/pdf/generate.js'
+import { generatePng } from './src/files/png/generate.js'
+import { generateXlsx } from './src/files/xlsx/generate.js'
+import { generateCsv } from './src/files/csv/generate.js'
+
+export default {
+  generateCsv,
+  generateDocx,
+  generateGif,
+  generateJpg,
+  generatePdf,
+  generateXlsx,
+  generatePng,
+}

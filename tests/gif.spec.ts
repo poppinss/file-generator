@@ -9,11 +9,14 @@
 
 import { test } from '@japa/runner'
 import { fileTypeFromBuffer } from 'file-type'
-import { generateGif } from '../src/files/gif/generate.js'
+import fileGenerator from '../index.js'
 
 test.group('GIF', () => {
   test('generate a gif file with custom name', async ({ assert }) => {
-    const { contents, mime, size, name } = await generateGif(1000 * 1000 * 2, 'foo.gif')
+    const { contents, mime, size, name } = await fileGenerator.generateGif(
+      1000 * 1000 * 2,
+      'foo.gif'
+    )
 
     assert.equal(mime, 'image/gif')
     assert.equal(size, 1000 * 1000 * 2)
@@ -25,7 +28,7 @@ test.group('GIF', () => {
   })
 
   test('do not generate gif smaller than the fake on disk file', async ({ assert }) => {
-    const { contents, mime, size } = await generateGif(10)
+    const { contents, mime, size } = await fileGenerator.generateGif(10)
 
     assert.equal(mime, 'image/gif')
     assert.isAbove(size, 30)
@@ -36,7 +39,7 @@ test.group('GIF', () => {
   })
 
   test('do not generate gif smaller than the fake on disk file', async ({ assert }) => {
-    const { contents, mime, size } = await generateGif(10)
+    const { contents, mime, size } = await fileGenerator.generateGif(10)
 
     assert.equal(mime, 'image/gif')
     assert.isAbove(size, 30)

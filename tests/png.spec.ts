@@ -9,11 +9,11 @@
 
 import { test } from '@japa/runner'
 import { fileTypeFromBuffer } from 'file-type'
-import { generatePng } from '../src/files/png/generate.js'
+import fileGenerator from '../index.js'
 
 test.group('PNG', () => {
   test('generate a png file', async ({ assert }) => {
-    const { contents, mime, size } = await generatePng(1000 * 1000 * 2)
+    const { contents, mime, size } = await fileGenerator.generatePng(1000 * 1000 * 2)
 
     assert.equal(mime, 'image/png')
     assert.equal(size, 1000 * 1000 * 2)
@@ -24,7 +24,10 @@ test.group('PNG', () => {
   })
 
   test('generate a png file with custom name', async ({ assert }) => {
-    const { contents, mime, size, name } = await generatePng(1000 * 1000 * 2, 'foo.png')
+    const { contents, mime, size, name } = await fileGenerator.generatePng(
+      1000 * 1000 * 2,
+      'foo.png'
+    )
 
     assert.equal(mime, 'image/png')
     assert.equal(size, 1000 * 1000 * 2)
@@ -36,7 +39,7 @@ test.group('PNG', () => {
   })
 
   test('do not generate png smaller than the fake on disk file', async ({ assert }) => {
-    const { contents, mime, size } = await generatePng(10)
+    const { contents, mime, size } = await fileGenerator.generatePng(10)
 
     assert.equal(mime, 'image/png')
     assert.isAbove(size, 30)

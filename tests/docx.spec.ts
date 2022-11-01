@@ -35,6 +35,18 @@ test.group('DOCX', () => {
     })
   })
 
+  test('generate a docx file with human readable size', async ({ assert }) => {
+    const { contents, mime, size, name } = await generateDocx('1mb', 'foo.docx')
+
+    assert.equal(mime, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    assert.equal(size, 1024 * 1024)
+    assert.equal(name, 'foo.docx')
+    assert.deepEqual(await fileTypeFromBuffer(contents), {
+      ext: 'docx',
+      mime: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    })
+  })
+
   test('do not generate gif smaller than the fake on disk file', async ({ assert }) => {
     const { contents, mime, size } = await generateDocx(1000)
 

@@ -14,7 +14,7 @@
   },
   "scripts": {
     "pretest": "npm run lint",
-    "test": "npm run vscode:test",
+    "test": "c8 npm run vscode:test",
     "clean": "del-cli build",
     "copy:files": "copyfiles 'src/files/**/*{.png,.gif,.jpg,.pdf,.docx,.xlsx}' build",
     "compile": "npm run lint && npm run clean && tsc && npm run copy:files",

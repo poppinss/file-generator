@@ -25,14 +25,14 @@ yarn add @poppinss/file-generator
 Use the exported functions as follows.
 
 ```ts
-import { generatePng } from '@poppinss/file-generator'
+import fileGenerator from '@poppinss/file-generator'
 
 const {
   contents,
   size,
   mime,
   name
-} = await generatePng('1mb')
+} = await fileGenerator.generatePng('1mb')
 ```
 
 - `contents` is a buffer.
@@ -43,7 +43,7 @@ const {
 You can also define a custom file name as the second argument.
 
 ```ts
-await generatePng('1mb', 'avatar.png')
+await fileGenerator.generatePng('1mb', 'avatar.png')
 ```
 
 ## Usage with form-data
@@ -53,7 +53,7 @@ You can pass the generated content to an instance of form data as follows.
 import FormData from 'form-data'
 
 const form = new FormData()
-const file = await generatePng('1mb')
+const file = await fileGenerator.generatePng('1mb')
 
 form.append('avatar', file.contents, {
   filename: file.name,

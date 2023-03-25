@@ -1,6 +1,6 @@
 {
   "name": "@poppinss/file-generator",
-  "version": "2.0.1-1",
+  "version": "2.0.1-2",
   "description": "Generate in-memory fake files for custom size",
   "main": "build/index.js",
   "type": "module",

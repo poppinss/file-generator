@@ -12,11 +12,15 @@
   "exports": {
     ".": "./build/index.js"
   },
+  "engines": {
+    "node": ">=18.16.0"
+  },
   "scripts": {
     "pretest": "npm run lint",
-    "test": "c8 npm run vscode:test",
+    "test": "c8 npm run quick:test",
     "clean": "del-cli build",
     "copy:files": "copyfiles 'src/files/**/*{.png,.gif,.jpg,.pdf,.docx,.xlsx}' build",
+    "typecheck": "tsc --noEmit",
     "compile": "npm run lint && npm run clean && tsc && npm run copy:files",
     "build": "npm run compile",
     "release": "np",
@@ -25,7 +29,7 @@
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
     "sync-labels": "github-label-sync --labels .github/labels.json poppinss/file-generator",
-    "vscode:test": "node --loader=ts-node/esm bin/test.ts"
+    "quick:test": "node --loader=ts-node/esm bin/test.ts"
   },
   "keywords": [
     "file-generator",

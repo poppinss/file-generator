@@ -78,8 +78,8 @@ Following are the available methods to generate different files.
 - `generateXlsx` - Generate a Microsoft excel spreadsheet (passes [file-type][1] validation).
 - `generateCsv` - Generate a CSV file.
 
-[github-actions-image]: https://img.shields.io/github/actions/workflow/status/poppinss/file-generator/test.yml?style=for-the-badge
-[github-actions-url]: https://github.com/poppinss/file-generator/actions/workflows/test.yml "github-actions"
+[github-actions-image]: https://img.shields.io/github/actions/workflow/status/poppinss/file-generator/checks.yml?style=for-the-badge
+[github-actions-url]: https://github.com/poppinss/file-generator/actions/workflows/checks.yml "github-actions"
 
 [npm-image]: https://img.shields.io/npm/v/@poppinss/file-generator.svg?style=for-the-badge&logo=npm
 [npm-url]: https://npmjs.org/package/@poppinss/file-generator "npm"

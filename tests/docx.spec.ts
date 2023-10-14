@@ -8,12 +8,12 @@
  */
 
 import { test } from '@japa/runner'
-import { generateDocx } from '../src/files/docx'
-import { fileTypeFromBuffer } from '../test_helpers'
+import { fileTypeFromBuffer } from 'file-type'
+import fileGenerator from '../index.js'
 
 test.group('DOCX', () => {
   test('generate a docx file', async ({ assert }) => {
-    const { contents, mime, size } = await generateDocx(1000 * 1000 * 2)
+    const { contents, mime, size } = await fileGenerator.generateDocx(1000 * 1000 * 2)
 
     assert.equal(mime, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
     assert.equal(size, 1000 * 1000 * 2)
@@ -24,7 +24,10 @@ test.group('DOCX', () => {
   })
 
   test('generate a docx file with custom name', async ({ assert }) => {
-    const { contents, mime, size, name } = await generateDocx(1000 * 1000 * 2, 'foo.docx')
+    const { contents, mime, size, name } = await fileGenerator.generateDocx(
+      1000 * 1000 * 2,
+      'foo.docx'
+    )
 
     assert.equal(mime, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
     assert.equal(size, 1000 * 1000 * 2)
@@ -35,8 +38,20 @@ test.group('DOCX', () => {
     })
   })
 
+  test('generate a docx file with human readable size', async ({ assert }) => {
+    const { contents, mime, size, name } = await fileGenerator.generateDocx('1mb', 'foo.docx')
+
+    assert.equal(mime, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    assert.equal(size, 1024 * 1024)
+    assert.equal(name, 'foo.docx')
+    assert.deepEqual(await fileTypeFromBuffer(contents), {
+      ext: 'docx',
+      mime: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    })
+  })
+
   test('do not generate gif smaller than the fake on disk file', async ({ assert }) => {
-    const { contents, mime, size } = await generateDocx(1000)
+    const { contents, mime, size } = await fileGenerator.generateDocx(1000)
 
     assert.equal(mime, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
     assert.isAbove(size, 3000)

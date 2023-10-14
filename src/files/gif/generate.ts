@@ -7,10 +7,10 @@
  * file that was distributed with this source code.
  */
 
-import { join } from 'path'
-import { randomUUID } from 'crypto'
-import { readFile } from 'fs/promises'
-import { generate } from '../generate'
+import { join } from 'node:path'
+import { randomUUID } from 'node:crypto'
+import { readFile } from 'node:fs/promises'
+import { toBuffer, dirname } from '../utilities.js'
 
 /**
  * Generates a fake gif file for the given file size.
@@ -24,7 +24,8 @@ export async function generateGif(
 ): Promise<{ contents: Buffer; size: number; name: string; mime: string }> {
   const mime = 'image/gif'
   const name = fileName || `${randomUUID()}.gif`
-  const contents = generate(fileSize, await readFile(join(__dirname, './fake.gif')))
+  const initialBytes = await readFile(join(dirname(import.meta.url), './fake.gif'))
+  const contents = toBuffer(fileSize, initialBytes)
 
   return { contents, mime, size: contents.length, name }
 }

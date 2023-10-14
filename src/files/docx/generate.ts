@@ -7,10 +7,10 @@
  * file that was distributed with this source code.
  */
 
-import { join } from 'path'
-import { randomUUID } from 'crypto'
-import { readFile } from 'fs/promises'
-import { generate } from '../generate'
+import { join } from 'node:path'
+import { randomUUID } from 'node:crypto'
+import { readFile } from 'node:fs/promises'
+import { toBuffer, dirname } from '../utilities.js'
 
 /**
  * Generates a fake docx file for the given file size.
@@ -24,7 +24,8 @@ export async function generateDocx(
 ): Promise<{ contents: Buffer; size: number; name: string; mime: string }> {
   const mime = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   const name = fileName || `${randomUUID()}.docx`
-  const contents = generate(fileSize, await readFile(join(__dirname, './fake.docx')))
+  const initialBytes = await readFile(join(dirname(import.meta.url), './fake.docx'))
+  const contents = toBuffer(fileSize, initialBytes)
 
   return { contents, mime, size: contents.length, name }
 }

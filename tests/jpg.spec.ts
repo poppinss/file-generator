@@ -8,12 +8,12 @@
  */
 
 import { test } from '@japa/runner'
-import { generateJpg } from '../src/files/jpg'
-import { fileTypeFromBuffer } from '../test_helpers'
+import { fileTypeFromBuffer } from 'file-type'
+import fileGenerator from '../index.js'
 
 test.group('JPG', () => {
   test('generate a jpg file', async ({ assert }) => {
-    const { contents, mime, size } = await generateJpg(1000 * 1000 * 2)
+    const { contents, mime, size } = await fileGenerator.generateJpg(1000 * 1000 * 2)
 
     assert.equal(mime, 'image/jpeg')
     assert.equal(size, 1000 * 1000 * 2)
@@ -24,7 +24,10 @@ test.group('JPG', () => {
   })
 
   test('generate a jpg file with custom name', async ({ assert }) => {
-    const { contents, mime, size, name } = await generateJpg(1000 * 1000 * 2, 'foo.jpg')
+    const { contents, mime, size, name } = await fileGenerator.generateJpg(
+      1000 * 1000 * 2,
+      'foo.jpg'
+    )
 
     assert.equal(mime, 'image/jpeg')
     assert.equal(size, 1000 * 1000 * 2)
@@ -36,7 +39,7 @@ test.group('JPG', () => {
   })
 
   test('do not generate jpg smaller than the fake on disk file', async ({ assert }) => {
-    const { contents, mime, size } = await generateJpg(10)
+    const { contents, mime, size } = await fileGenerator.generateJpg(10)
 
     assert.equal(mime, 'image/jpeg')
     assert.isAbove(size, 30)

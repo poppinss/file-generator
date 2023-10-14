@@ -8,12 +8,12 @@
  */
 
 import { test } from '@japa/runner'
-import { generatePdf } from '../src/files/pdf'
-import { fileTypeFromBuffer } from '../test_helpers'
+import { fileTypeFromBuffer } from 'file-type'
+import fileGenerator from '../index.js'
 
 test.group('PDF', () => {
   test('generate a pdf file', async ({ assert }) => {
-    const { contents, mime, size } = await generatePdf(1000 * 1000 * 2)
+    const { contents, mime, size } = await fileGenerator.generatePdf(1000 * 1000 * 2)
 
     assert.equal(mime, 'application/pdf')
     assert.equal(size, 1000 * 1000 * 2)
@@ -24,7 +24,10 @@ test.group('PDF', () => {
   })
 
   test('generate a pdf file with custom name', async ({ assert }) => {
-    const { contents, mime, size, name } = await generatePdf(1000 * 1000 * 2, 'foo.pdf')
+    const { contents, mime, size, name } = await fileGenerator.generatePdf(
+      1000 * 1000 * 2,
+      'foo.pdf'
+    )
 
     assert.equal(mime, 'application/pdf')
     assert.equal(size, 1000 * 1000 * 2)
@@ -36,7 +39,7 @@ test.group('PDF', () => {
   })
 
   test('do not generate gif smaller than the fake on disk file', async ({ assert }) => {
-    const { contents, mime, size } = await generatePdf(1000)
+    const { contents, mime, size } = await fileGenerator.generatePdf(1000)
 
     assert.equal(mime, 'application/pdf')
     assert.isAbove(size, 3000)

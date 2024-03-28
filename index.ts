@@ -15,7 +15,7 @@ import { generatePng } from './src/files/png/generate.js'
 import { generateXlsx } from './src/files/xlsx/generate.js'
 import { generateCsv } from './src/files/csv/generate.js'
 
-export default {
+const fileGenerator = {
   generateCsv,
   generateDocx,
   generateGif,
@@ -24,3 +24,5 @@ export default {
   generateXlsx,
   generatePng,
 }
+
+export default fileGenerator

@@ -3,9 +3,7 @@
 
 [![github-actions-image]][github-actions-url] [![npm-image]][npm-url] [![license-image]][license-url] [![typescript-image]][typescript-url]
 
-> **Note**: This package is ESM only
-
-This package allows you generate fake in-memory files of varying sizes. The generated file can be used during testing to test the file uploads functionality of your Node server.
+This package allows you generate fake in-memory files of varying sizes. The generated file buffer can be used to test file uploads.
 
 - Support for `docx`, `csv`, `xlsx`, `pdf`, `png`, `jpg`, and `gif` files.
 - Passes the [magic number file](https://gist.github.com/leommoore/f9e57ba2aa4bf197ebc5) validation.

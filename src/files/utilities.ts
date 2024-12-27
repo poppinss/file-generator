@@ -11,11 +11,26 @@ import bytes from 'bytes'
 import { fileURLToPath } from 'node:url'
 import { dirname as pathDirname } from 'node:path'
 
+const E_INVALID_FILE_SIZE_EXPRESSION = (fileSize: number | string) => {
+  const error = new Error(
+    `Invalid fileSize value "${fileSize}". Expected value to be a number representing bytes or a string expression`
+  )
+  Object.defineProperty(error, 'hint', {
+    value: 'Check https://www.npmjs.com/package/bytes package to view supported string expressions',
+  })
+
+  return error
+}
+
 /**
  * Generates a buffer for a given size with pre-filled contents
  */
 export function toBuffer(fileSize: string | number, contents: Buffer) {
   const size = typeof fileSize === 'string' ? bytes(fileSize) : fileSize
+  if (size === null) {
+    throw E_INVALID_FILE_SIZE_EXPRESSION(fileSize)
+  }
+
   const contentsSize = contents.length
   return Buffer.alloc(size < contentsSize ? contentsSize : size, contents, 'binary')
 }

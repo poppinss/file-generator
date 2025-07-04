@@ -12,14 +12,9 @@ import { fileURLToPath } from 'node:url'
 import { dirname as pathDirname } from 'node:path'
 
 const E_INVALID_FILE_SIZE_EXPRESSION = (fileSize: number | string) => {
-  const error = new Error(
+  return new Error(
     `Invalid fileSize value "${fileSize}". Expected value to be a number representing bytes or a string expression`
   )
-  Object.defineProperty(error, 'hint', {
-    value: 'Check https://www.npmjs.com/package/bytes package to view supported string expressions',
-  })
-
-  return error
 }
 
 /**

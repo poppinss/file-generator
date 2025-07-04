@@ -10,7 +10,7 @@
 import { join } from 'node:path'
 import { randomUUID } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
-import { toBuffer, dirname } from '../utilities.js'
+import { toBuffer, dirname } from '../utils.ts'
 
 /**
  * Generates a fake gif file for the given file size.

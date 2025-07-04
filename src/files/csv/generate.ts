@@ -8,7 +8,7 @@
  */
 
 import { randomUUID } from 'node:crypto'
-import { toBuffer } from '../utilities.js'
+import { toBuffer } from '../utils.ts'
 
 /**
  * Generates a fake csv file for the given file size.

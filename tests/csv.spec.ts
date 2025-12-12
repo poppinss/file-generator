@@ -8,7 +8,7 @@
  */
 
 import { test } from '@japa/runner'
-import fileGenerator from '../index.js'
+import fileGenerator from '../index.ts'
 
 test.group('CSV', () => {
   test('generate a csv file', async ({ assert }) => {

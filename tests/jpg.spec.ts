@@ -9,7 +9,7 @@
 
 import { test } from '@japa/runner'
 import { fileTypeFromBuffer } from 'file-type'
-import fileGenerator from '../index.js'
+import fileGenerator from '../index.ts'
 
 test.group('JPG', () => {
   test('generate a jpg file', async ({ assert }) => {
